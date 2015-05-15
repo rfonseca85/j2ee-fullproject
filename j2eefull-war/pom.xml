@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>j2eefull</artifactId>
+		<groupId>com.rfonseca</groupId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>j2eefull-war</artifactId>
+	<packaging>war</packaging>
+	<name>j2eefull-war</name>
+	<description>
+		O modulo Web da aplicacao de j2eefull Java EE
+	</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.rfonseca</groupId>
+			<artifactId>j2eefull-ejb</artifactId>
+			<type>ejb</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>6.0</version>
+			<scope>provided</scope>
+		</dependency>	
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			
+			<!-- jaxb Generate class by XSD -->
+			<plugin>
+			    <groupId>org.jvnet.jaxb2.maven2</groupId>
+			    <artifactId>maven-jaxb2-plugin</artifactId>
+			    <version>0.8.2</version>
+			    <executions>
+			        <execution>
+			            <goals>
+			                <goal>generate</goal>
+			            </goals>
+			            <phase>generate-sources</phase>
+			        </execution>
+			    </executions>
+			    <configuration>
+			        <schemaDirectory>
+			            ${basedir}/src/main/resources/schemas
+			        </schemaDirectory>
+			        <generateDirectory>
+			            ${project.build.directory}/generated-sources/jaxb2
+			        </generateDirectory>
+			        <args>
+			            <arg>-npa</arg>
+			            <arg>-Xcollection-setter-injector</arg>
+			 </args>
+			        <extension>true</extension>
+			        <episode>true</episode>
+			        <plugins>
+			            <plugin>
+			                <groupId>net.java.dev.vcc.thirdparty</groupId>
+			                <artifactId>collection-setter-injector</artifactId>
+			                <version>0.5.0-1</version>
+			            </plugin>
+			        </plugins>
+			    </configuration>
+			</plugin>			
+			
+			
+		</plugins>
+	</build>
+</project>

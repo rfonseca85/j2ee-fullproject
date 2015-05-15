@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<f:loadBundle basename="application" var="msg" />
+
+<head>
+<title><h:outputText value="#{msg.title}" /></title>
+</head>
+
+<body>
+	<!-- Formulario de processamento -->
+	<h:form>
+		<div style="float: left">
+			<!-- Dados de entrada do formulario -->
+			<h:panelGrid columns="1" cellspacing="5">
+				<h:outputText value="#{msg.labelImput}:" />
+				<h:inputTextarea rows="5" cols="35" value="#{testMB.imput}" />
+				<h:commandButton action="#{testMB.reverseWord}"
+					value="#{msg.labelButtonReverseword}" />
+			</h:panelGrid>
+		</div>
+
+		<div style="float: left">
+			<h:panelGrid columns="1" cellspacing="5">
+				<h:outputText value="#{msg.labelOutput}:" />
+				<h:inputTextarea rows="5" cols="35" readonly="true"
+					value="#{testMB.output}" />
+			</h:panelGrid>
+		</div>
+	</h:form>
+</body>
+</html>

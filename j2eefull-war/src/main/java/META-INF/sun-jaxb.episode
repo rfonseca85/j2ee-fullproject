@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="2.1" xmlns="http://java.sun.com/xml/ns/jaxb">
+  <!--
+
+Este arquivo foi gerado pela Arquitetura JavaTM para Implementação de Referência (JAXB) de Bind XML, v2.2.5-2 
+Consulte <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+Todas as modificações neste arquivo serão perdidas após a recompilação do esquema de origem. 
+Gerado em: AM.03.24 às 10:35:17 AM BRT 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://cbdwar.ovd.com/ws/types/">
+    <schemaBindings map="false">
+      <package name="com.ovd.cbdwar.ws.types"/>
+    </schemaBindings>
+    <bindings scd="~tns:RetornarClienteWsOut">
+      <class ref="com.ovd.cbdwar.ws.types.RetornarClienteWsOut"/>
+    </bindings>
+    <bindings scd="~tns:DivisaoWs">
+      <class ref="com.ovd.cbdwar.ws.types.DivisaoWs"/>
+    </bindings>
+    <bindings scd="~tns:ClienteWs">
+      <class ref="com.ovd.cbdwar.ws.types.ClienteWs"/>
+    </bindings>
+    <bindings scd="~tns:RetornarClienteWsIn">
+      <class ref="com.ovd.cbdwar.ws.types.RetornarClienteWsIn"/>
+    </bindings>
+  </bindings>
+</bindings>
+

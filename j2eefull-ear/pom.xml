@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Detalhes do modulo -->
+	<parent>
+		<artifactId>j2eefull</artifactId>
+		<groupId>com.rfonseca</groupId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>j2eefull-ear</artifactId>
+	<packaging>ear</packaging>
+	<name>j2eefull-ear</name>
+	<description>
+		Modulo EAR da aplicacao de j2eefull Java EE
+	</description>
+	
+	<!-- Dependencias do modulo -->
+	<dependencies>
+		<!-- Modulo EJB -->
+		<dependency>
+			<groupId>com.rfonseca</groupId>
+			<artifactId>j2eefull-ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+		<!-- Modulo Web -->
+		<dependency>
+			<groupId>com.rfonseca</groupId>
+			<artifactId>j2eefull-war</artifactId>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>j2eefull-ear</finalName>
+		<plugins>
+			<!-- Plugin de empacotamento EAR -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<version>6</version>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<fileNameMapping>no-version</fileNameMapping>
+					<modules></modules>
+				</configuration>
+			</plugin>
+			<!-- (Opcional) Plugin de integracao com Weblogic -->
+			<plugin>
+				<groupId>com.oracle.weblogic</groupId> 
+				<artifactId>weblogic-maven-plugin</artifactId> 
+				<version>12.1.1.0</version> 
+				<configuration> 				
+					<adminurl>${weblogic.adminurl}</adminurl>
+					<user>${weblogic.user}</user> 
+					<password>${weblogic.passwd}</password> 
+					<upload>true</upload> 
+					<action>deploy</action> 
+					<remote>${weblogic.remote}</remote> 
+					<verbose>true</verbose> 
+					<source>${project.build.directory}/${project.build.finalName}.${project.packaging}</source> 
+					<name>${project.build.finalName}</name>
+					<targets>${weblogic.targets}</targets>										
+				</configuration>							
+			</plugin>			
+		</plugins>
+	</build>
+	
+</project>
